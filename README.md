@@ -8,7 +8,7 @@ When I passed my old resume to an industry friend who does a lot of hiring, he w
 This is a __LaTeX2e__ template that compiles with either __XeLaTeX__ or __LuaLaTex__. You can upload the files to [__ShareLatex.com__](https://sharelatex.com) (a personal account is free) to edit and compile them online.
 ## Preview
 ![sample cv page 1 image](https://github.com/gbmj/gbmj-timeline-cv/blob/master/sample-cv-p1.png "sample cv page 1")
-![sample cv page 2 image](https://github.com/gbmj/gbmj-timeline-cv/blob/master/sample-cv-p2.png "sample cv page 2")
+![sample cv page 2 image](https://github.com/gbmj/gbmj-timeline-cv/blob/master/sample-cv-p2n.png "sample cv page 2")
 ## License
 #### Copyright 2018 Grayson Bray Morris.
 
