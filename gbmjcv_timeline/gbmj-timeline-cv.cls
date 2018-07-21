@@ -7,7 +7,7 @@
 %
 % AUTHOR
 % ======
-% Grayson Morris (http://www.graysonbraymorris.com)
+% Copyright 2018 Grayson Morris (http://www.graysonbraymorris.com)
 % https://github.com/gbmj/gbmj-timeline-cv
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesClass{gbmj-timeline-cv}[2018/07/30 graphical timeline resume class]
