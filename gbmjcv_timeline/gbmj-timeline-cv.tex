@@ -1,0 +1,368 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% gbmj's timeline cv –- a graphical life-story resume
+% LaTeX Template – TeX file
+% Compile with XeLaTeX or LuaTeX
+% Version 1.0 (30/7/2018)
+% Shared under GPLv3
+%
+% AUTHOR
+% ======
+% Grayson Morris (http://www.graysonbraymorris.com)
+% https://github.com/gbmj/gbmj-timeline-cv
+%
+% WHAT
+% ====
+% This template provides a potential employer/school with all the connecting glue that most resume formats leave out. The usual suspects -- degrees, jobs, skills -- occupy boxes in the left and right columns, so the reader can still get that traditional bullet-point overview. The middle column tells the relevant bits of your life story, in a natural chronological order that provides context for where you've been and what you've done. You can use it to explain gaps in employment, add detail to the quick-glance side entries, and display your personality.
+%
+% WHY
+% ===
+% When I passed my old resume to an industry friend who does a lot of hiring, he walked me through his mental evaluation. "So here's a section on Papers... and here a section on Patents... how do they time up with your Experience? Hmmm, here's a three-year gap, what happened there? So you started a PhD program but I don't see a degree... what's that all about?" Rather than let the reader assume the worst (three years of rehab? Failed out of grad school?), I decided to provide the missing intel -- in a clear, easy-to-parse chronological layout that highlights what belongs together.
+%
+% HOW
+% ===
+% The heavy lifters in this template are the tcolorbox and tikz packages:
+%
+% -- https://mirror.hmc.edu/ctan/macros/latex/contrib/tcolorbox/tcolorbox.pdf
+% -- http://mirror.hmc.edu/ctan/macros/latex/contrib/tcolorbox/tcolorbox-tutorial-poster.pdf
+% -- https://www.bu.edu/math/files/2013/08/tikzpgfmanual.pdf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% TODO:
+% 1. write a print declareoption that converts links in the storybox to their textual versions in some reasonable way (ie, not in the text itself but maybe in a box at the bottom left of the second page).
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CHANGELOG:
+% v1.0:
+% 1. Initial release.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Known Issues:
+% 1. A couple of hacky spacing and font fixes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper]{gbmj-timeline-cv} % use "letterpaper" if you're in the US
+
+\begin{document}
+
+
+% SETUP: each tcbposter declaration gives you one page, so making multiple pages is easy. On each page are:
+% =======================================================================
+% a header section (extended on the first page, minimal on second and later pages)
+% accomplishment sideboxes to the left and right (with dotted frame, timespan inset, and chrono-dot)
+% a central storybox
+%
+% Each box must have a unique name within a tcbposter declaration (but you can reuse names in a different tcbposter, so eg your headerbox can be named "cvheader" on every page). The boxes are mostly placed relative to one another, so if you add text to one or change its dimensions directly, the boxes below it will shift accordingly. Note that you do have to manually shift the chrono-dot positions to keep pointing to the same spot in the central story.
+%
+% In the default version, it may look like I'm using three columns, but that's an illusion. The page is actually partitioned into 18 columns: 5 for the left infoboxes, 7 for the central story, and 6 for the right infoboxes. You could make any individual box narrower or wider, or make it start more to the left or the right (and even overlap another box). See the tcolorbox poster tutorial for more information.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE 1
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tcbposter}[  
+coverage = {spread},% use the whole page for the poster
+poster = {
+showframe=false,    % set to true to see a grid while you're setting things up
+columns=18,rows=20  % you can make this more or less fine-grained depending on your needs
+},
+boxes = {           % set basic defaults for all the posterboxes on page 1. You can override them later
+opacityback=0,      % transparent background for box content
+opacitybacktitle=0, % transparent background for title
+colframe=accent,    % color for the dashed sidebox frame and solid timespan frame
+right=2mm, left=2mm, %default l-r padding is 4mm
+frame hidden,           % for header and central story; we'll turn it back on in the sideboxes
+fonttitle=\defboxtitlefont % for header and central story; we'll change this in the sideboxes
+}]
+
+%%%%%%%%%%%%%
+% p1 header
+%%%%%%%%%%%%%
+% see the .cls file for details on how these work
+\headerbox{name=cvheader,column=1,span=13,row=1, rowspan=2.6}{Grayson}{Morris}{Streetname 101 | 1111AA Dutch Town}{me@my.adr}{01.234.56.789}
+\photobox{name=cvphoto, column=14, span=5, row=1, rowspan=3.9}{img/Grayson_web_bw_2_round.jpg}
+
+% objective
+\tightbox{name=cvobjective, column=1, span=9.5, below=cvheader}{Objective}{
+    After sixteen rewarding years running my own translation company, I'm eager to return to \cvhilite{computer science research.} My past work is in graphics; my future is in \cvhilite{privacy and security.}
+}
+
+% personal block
+% Tailor this info to your country's resume customs. 
+\tightbox{name=personal, column=11, span=5, below=cvheader}{About}{
+    \cvcategory{Citizenship} \cvanswer{USA + NL} \\
+    \cvcategory{Date of Birth} \cvanswer{01-01-1967} \\
+    \cvcategory{EN} \cvanswer{native} \cvcategory{NL} \cvanswer{fluent}
+}
+
+%%%%%%%%%%%%%
+% p1 story
+%%%%%%%%%%%%%
+\posterbox[title=My story, left=3mm, right=3mm]{name=story1, column=6, span=7, below=cvobjective}{
+    In 1981, at the age of 14, I applied to the North Carolina School of Science and Mathematics. After a highly competitive selection process, I was admitted, and I graduated with my {\cvhilite{high school diploma in 1984.}}
+    \sbvsep{1mm}
+    I took a year off, then went to college. With a perfect 4.0 / 4.0 GPA my first year, I was eligible to compete for the university's \cvhilite{award for freshman excellence.} Thanks to my additional activities, including volunteer work with The Hunger Project, I won!
+    \sbvsep{1mm}
+    In 1988 I was awarded one of four international student grants to assist NFRA (now ASTRON) staff members in their astronomical research. Those twelve weeks in Dwingeloo produced \cvhilite{three academic papers on radio astronomy imaging.} In late August I went back home to the US and completed my \cvhilite{BSc in mathematics in 1989.}
+    \sbvsep{1mm}
+    During my final semester of college, I was \cvhilite{hired to teach precalculus} to first-year students. I loved it! My enthusiasm must have rubbed off on my students; I was nominated for the math department's teaching award. The university hired me for several more semesters over the years, including a summer program for disadvantaged students. \\[1mm]
+    In the fall of 1991 I gave birth to my first child, and I spent the next two years at home. In 1993 I started a \cvhilite{PhD program in computer science} at UNC, as part of Turing Award winner Frederick P. Brooks' Architectural Walkthrough team. (Read the 2004 article \duhref{https://www.graysonbraymorris.com/pdf/MMRMassiveModelRenderingSystem.pdf}{``Massive Model Rendering System''} for a brief project overview.) I worked hard both in class and on the team, and in 1995 I was awarded a \cvhilite{National Science Foundation Graduate Research Fellowship.}
+    \sbvsep{1mm}
+    As fate would have it, a year later \cvhilite{IBM} made me an offer I couldn't refuse, and I left school sans PhD. (By then I was a single mother working to make ends meet.) Big Blue hired me to implement graphics algorithms in assembly on an exciting new parallel architecture. Astoninshingly, IBM canceled the project between my interview and my first day of work, so I ended up \cvhilite{programming the G.729A speech codec} on a different architecture.
+}
+
+%%%%%%%%%%%%%%
+% p1 timeline
+%%%%%%%%%%%%%%
+
+% NCSSM block – 1984
+\sideboxleft{name=ncssm, column=1, span=5, below=cvobjective}{1984}{2cm}{
+    \sbtitle{High School Diploma}
+    \sbsubtitle{North Carolina School of Science and Mathematics} 
+    \sbdescrip{
+        NCSSM opened in 1980 as the first of its kind in the US: a residential high school for academically gifted students, focused on science, technology, engineering, and math. Applicants undergo a rigorous selection process.
+    }
+    \sbvsep{2mm}
+    \cvhilite{NL Equivalent:} \cvkeyword{VWO NT + NG} 
+}
+
+% NFRA block – 1988
+\sideboxright{name=nfra, column=13, span=6, below=cvphoto}{1988}{6cm}{
+    \sbtitle{Summer Intern}
+    \sbsubtitle{NFRA (now ASTRON)}
+    \sbdescrip{
+        Three-month grant to work with Dr. Steffi Baum and Dr. Chris O'Dea at the NFRA on radio astronomy imaging.
+    }
+    \sbvsep{1mm}
+    \cvhilite{Papers}
+    \sbvsep{1mm}
+    O'Dea, CP, SA Baum, C Stanghellini, \gauthor{GB Morris,} AR Patnaik, and Gopal-Krishna. \ptitle{http://articles.adsabs.harvard.edu/full/1990A&AS...84..549O}{``Multifrequency VLA observations of GHz-peaked-spectrum radio cores.''} Astronomy and Astrophysics Supplement Series 84 (1990): 549–62.
+    \sbvsep{4pt}
+    Stanghellini, C, SA Baum, CP O'Dea, and \gauthor{GB Morris.} \ptitle{http://articles.adsabs.harvard.edu/full/1990A&A...233..379S}{``Extended radio emission associated with GHz-peaked-spectrum radio sources.''} Astronomy and Astrophysics 233 (1990): 379–84.
+    \sbvsep{4pt}
+    O'Dea, CP, SA Baum, and \gauthor{GB Morris.} \ptitle{http://articles.adsabs.harvard.edu/full/1990A&AS...82..261O}{``CCD observations of GigaHertz-peaked- spectrum radio sources.''} Astronomy and Astrophysics Supplement Series 82 (1990): 261–72.
+}
+
+% BS MATH block – 1989
+\sideboxleft{name=bsmath, column=1, span=5, below=ncssm}{1989}{3cm}{
+    \sbtitle{BSc Mathematics}
+    \sbsubtitle{University of North Carolina at Chapel Hill} 
+    \sbdescrip{
+        A broad liberal arts education with a mathematics specialization.}
+    \sbvsep{1mm}
+    \cvhilite{Coursework}
+    \cvkeyword{Advanced calculus | Algebraic structures | Differential equations | Differentiable manifolds | Geometry of curves and surfaces | Linear algebra | Real analysis | Topology}
+    \sbvsep{1mm}
+    \cvhilite{Project}
+    \cvkeyword{In-depth review of Hermann Weyl's classic text {\textit{Symmetry}}}
+    \sbvsep{1mm}
+    \cvhilite{Chancellor's award for student excellence} \cvkeyword{1986}
+    \sbvsep{1mm}
+    \cvhilite{CGPA} \cvkeyword{3.6 / 4.0}
+}
+
+% INSTRUCTOR block – 1989-94
+\sideboxright{name=instructor, column=13, span=6, below=nfra}{1989–94}{0.6cm}{
+    \sbtitle{Instructor}
+    \sbsubtitle{University of North Carolina at Chapel Hill} 
+    \sbdescrip{
+    Taught first-year university students.}
+    \sbvsep{2mm}
+    \cvhilite{Fall 1994} \cvkeyword{Freshman precalculus.}
+    \sbvsep{1mm}
+    \cvhilite{Fall/Spring 1993-94} \cvkeyword{Undergraduate introduction to computer science.}
+    \sbvsep{1mm}
+    \cvhilite{Spring 1991} \cvkeyword{Freshman precalculus.}
+    \sbvsep{1mm}
+    \cvhilite{Summer 1990} \cvkeyword{College algebra for incoming minority freshmen with demonstrated difficulties in mathematics.}
+    \sbvsep{1mm}
+    \cvhilite{Fall/Spring/Fall 1989-90} \cvkeyword{Freshman precalculus.}
+}
+
+% PhD CANDIDATE block – 1993-96
+\sideboxleft{name=phdcand, column=1, span=5, below=bsmath}{1993–96}{2cm}{
+    \sbtitle{PhD Candidate CompSci}
+    \sbsubtitle{University of North Carolina at Chapel Hill} 
+    \sbdescrip{
+        UNC-CH has been a leading center of virtual environments research since the field's early days.
+    }
+    \sbvsep{1mm}
+    \cvhilite{MSc-level Coursework} \\
+    \cvkeyword{Algorithm analysis | Architecture \& implementation | Automata | Complexity | Data structures | Graphics | Operating systems | Software design}
+    \sbvsep{1mm}
+    \cvhilite{Research} \cvkeyword{Virtual environments under Fred Brooks}
+    \sbvsep{1mm}
+    \cvhilite{NSF Graduate Research Fellowship} \cvkeyword{1995}
+
+}
+
+% IBM block – 1996-97
+\sideboxright{name=ibm, column=13, span=6, below=instructor}{1996–97}{0.7cm}{
+    \sbtitle{Software Engineer}
+    \sbsubtitle{International Business Machines} 
+    \sbdescrip{
+        Implemented the G.729A speech codec in assembly on IBM's Mwave digital signal processor.
+    }
+}
+
+% fake FOOTER block
+\posterbox[left=3mm, right=3mm, halign=center]{name=keepreading, column=6, span=7, below=story1}{{\fonttn\lightf\selectfont page \thepage \hspace{1pt} of \pageref{LastPage}}}
+
+\end{tcbposter} % end of page 1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE 2
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tcbposter}[ % same as the one on page 1
+    coverage = {spread},
+    poster = {showframe=false,columns=18,rows=20},
+    boxes = {
+    opacityback=0,
+    opacitybacktitle=0,
+    colframe=accent,
+    right=2mm, left=2mm,
+    frame hidden,
+    fonttitle=\defboxtitlefont
+}]
+
+%%%%%%%%%%%%%
+% p2 header
+%%%%%%%%%%%%%
+\headerbox{name=cvheader,column=1,span=13,row=1, rowspan=2}{Grayson}{Morris}{}{}{}
+\photobox{name=cvphoto, column=14, span=5, row=1, rowspan=3.9}{img/Grayson_web_bw_2_round.jpg}
+
+%%%%%%%%%%%%%%%
+% p2 story
+%%%%%%%%%%%%%%%
+\posterbox[title=My story continued, left=3mm, right=3mm]{name=story2, column=6, span=7, below=cvheader}{
+    Meanwhile, the team from IBM's canceled project spun off a new startup called \cvhilite{BOPS,} and I soon joined them to {implement a subset of the OpenGL graphics API} in assembly on a four-core instantiation of the synchronous MIMD iVLIW ManArray architecture, so we could run the Viewperf CDRS-03 benchmark. (Read the 1998 article \duhref{https://www.graysonbraymorris.com/pdf/BOPS_ManArray_arch.pdf}{``New High-End Architecture''} for a brief  overview of this amazing system.) These were dynamic, creative years, and I was privileged to contribute to \cvhilite{five patents}.
+    \sbvsep{1mm}
+    Along the way, I met and married a charming Dutchman. Our son was born in 1999, and our daughter nineteen months later. I spent the next few years at home, working at least as hard as I had in industry. (It's been said that \cvhilite{raising a family} hones vital work skills such as multitasking, leadership, planning, determination, and efficiency. I certainly won't argue with that.)
+    \sbvsep{1mm}
+    In the spring of 2002 we moved from the US to the Netherlands. I was ready for a new challenge (one that didn't involve diapers), so I started putting my language skills to use as a translator. I \cvhilite{founded my own company} that fall, and I spent the next sixteen years \cvhilite{translating and copywriting} for corporate, government, and private clients. My technical background often came in handy, as did my skill in writing. 
+    \sbvsep{1mm}
+    Speaking of writing, I also write science fiction and fantasy. Several of my stories have been published (see \duhref{https://www.graysonbraymorris.com/fiction/}{my personal website} if you're interested in reading them). 
+    \sbvsep{1mm}
+    So that's my story so far. After two decades on the periphery of technology, I'm ready to sink my teeth back into its heart. Over the years I've developed a keen interest in privacy and security. I've taken a handful of MOOCs on cybersecurity and dabbled in Python and ML. My next step is to earn an MSc, then a PhD. So \cvhilite{watch this space...}
+}
+
+%%%%%%%%%%%%%%%
+% p2 timeline
+%%%%%%%%%%%%%%%
+% hacky SPACER block to move left column up slightly
+\posterbox[blanker]{name=spacer, column=1, span=5, row=1, rowspan=1.5}{
+}
+
+% BOPS block – 1997-99
+\sideboxleft{name=bops, column=1, span=5, below=spacer}{1997–99}{2.5cm}{
+    \sbtitle{Software Engineer}
+    \sbsubtitle{Billions of Operations Per Second} 
+    \sbdescrip{
+        Implemented a subset of the OpenGL graphics API in assembly on a four-core instantiation of BOPS' synchronous MIMD iVLIW ManArray architecture. See right column for patents.
+    }
+}
+
+% BOPS PATENTS block – 1997-99
+\sideboxright{name=patents, column=13, span=6, below=cvphoto}{1997–99}{1.2cm}{
+    \sbtitle{Patents}
+    \sbsubtitle{Billions of Operations Per Second} 
+    \sbdescrip{ % hackily set desired font for the rest of the section
+    \cvhilite{US7962667B2, 1999} Pechanek, Strube, Barry, Kurak, Busboom, Schneider, Pitsianis, \gauthor{Morris,} Wolff, Marchand, Rodriguez, Jacobs. \ptitle{https://patents.google.com/patent/US7962667B2/}{System core for transferring data between an external device and memory.}
+    } % end of hacky font setting
+    \sbvsep{4pt}
+    \cvhilite{ US6748517B1, 1999} Pechanek, Strube, Barry, Kurak, Busboom, Schneider, Pitsianis, \gauthor{Morris,} Wolff, Marchand, Rodriguez, Jacobs. \ptitle{https://patents.google.com/patent/US6748517B1/}{Constructing database representing manifold array architecture instruction set for use in support tool code creation.}
+    \sbvsep{4pt}
+    \cvhilite{ US6622234B1, 1999} Pechanek, Strube, Wolff, Barry, \gauthor{Morris,} Busboom, Schneider. \ptitle{https://patents.google.com/patent/US6622234}{Methods and apparatus for initiating and resynchronizing multi-cycle SIMD instructions.} 
+    \sbvsep{4pt}
+    \cvhilite{ US6167501A, 1997} Barry, Pechanek, Drabenstott, Wolff, Pitsianis, \gauthor{Morris.} \ptitle{https://patents.google.com/patent/US6167501}{Methods and apparatus for ManArray PE-PE switch control.} 
+    \sbvsep{4pt}
+    \cvhilite{ US6151668A, 1997} Pechanek, Drabenstott, Revilla, Strube, \gauthor{Morris.}  \ptitle{https://patents.google.com/patent/US6151668}{Methods and apparatus for efficient synchronous MIMD operations with iVLIW PE-to-PE communication.}
+}
+
+% MJ HOLDINGS block – 1999-present
+\sideboxleft{name=mjholdings, column=1, span=5, below=bops}{1999–present}{3.5cm}{
+    \sbtitle{Cofounder}
+    \sbsubtitle{Morris-Jacobs Child Development and Chaos Management}
+    \sbdescrip{
+        Managing a deeply intensive field research project into offspring development. Responsible for subjects' care and feeding, waste management, sensory stimulation, dual language acquisition, conflict resolution, education, and acquisition of appropriate social skills. Secondary tasks include environmental maintenance, subject transportation, and sustenance preparation. (Grain of salt available upon request.)
+    }
+}
+
+% DAT block – 2002-present
+\sideboxleft{name=dat, column=1, span=5, below=mjholdings}{2002–present}{1.3cm}{
+    \sbtitle{Owner}
+    \sbsubtitle{Dutch-American Translations}
+    \sbdescrip{
+        Translating and copywriting for corporate, government, and private clients. Relevant highlights:
+    }
+    \sbvsep{4pt}
+    \cvhilite{TechWatch Books} | \cvkeyword{2018} Translated Rene Raaijmakers' technology-heavy book \textit{De architecten van ASML} for the US market.
+    \sbvsep{1mm}
+    \cvhilite{Bits\&Chips} | \cvkeyword{2016–18} Translated and edited the magazine's annual English-language issue for the high-tech industry.
+    \sbvsep{1mm}
+    \cvhilite{NanoLabNL} | \cvkeyword{2013} Took scientists' input and wrote a successful €26M grant proposal to fund QuEEn (quantum electrical engineering) under NWO's National Roadmap for Large-Scale Research Facilities.
+}
+
+% SKILLS block
+\sideboxright{name=skills, column=13, span=6, below=patents}{ABOUT}{}{
+    {\fonttn\lightf\selectfont
+        \vspace{2pt} % hack to get visual padding to look equal, even though it isn't, after this
+        \cvhilite{Me} \ptitle{https://www.graysonbraymorris.com}{www.graysonbraymorris.com}
+        \sbvsep{1mm}
+        \cvhilite{This doc} \LaTeX \hspace{4pt}\textbullet\hspace{2pt}\ptitle{https://github.com/gbmj}{github.com/gbmj}
+        \sbvsep{1mm}
+        \cvhilite{Hobbies} windsurfing and supping \\ \hspace{36pt}writing science fiction and fantasy\\
+    }
+}
+
+%%%%%%%%%%%%%%%
+% p2 future
+%%%%%%%%%%%%%%%
+% the outer, dashed-outline box
+\sideboxbottom{name=future, column=7, span=12, row=17, rowspan=3.1}{2019– . . .}{3.2cm}{
+}
+
+% "nested" chevrons
+% these come first so the nodes are behind the later box text and thus invisible
+\posterbox[halign=center, valign=center]{name=wideopen, column=7, span=13, row=18}{
+    \vspace{1.0cm}
+    % draw the chevrons:
+    \begin{tikzpicture}[
+        decoration={shape backgrounds,shape size=1cm,shape=signal},
+        signal from=west, signal to=east,
+        paint/.style={decorate, draw=#1!50!black, fill=#1!80}]
+
+        % change node draw colors to red/blue when fiddling with settings, so you can see what's going on
+        % note you may have to temporarily move this posterbox below the other three to see the nodes while you're arranging
+        \node[draw=white,minimum height=2cm,minimum width=0.3cm](A)at (0.9,0) {};
+        \node[draw=white,minimum height=2cm](B)at(8.0,0){};
+        \draw [paint=accent, decoration={shape sep=4.3cm},]
+        (A)-- (B);
+    \end{tikzpicture}
+}
+
+% "nested" box 1
+\posterbox[halign=left, valign=bottom]{name=nest2, column=7, span=5, row=17, rowspan=3}{
+    \begin{tcolorbox}[colframe=accent,beforeafter skip=3pt,inherit height=0.7,width=3cm, halign=center, valign=center]
+        \sbtitle{MSc cybersecurity}
+    \end{tcolorbox}
+
+}
+
+% "nested" box 2
+\posterbox[halign=center, valign=bottom]{name=nest2, column=10, span=5, row=17, rowspan=3}{
+    \begin{tcolorbox}[colframe=accent,beforeafter skip=3pt,inherit height=0.7,width=3cm, halign=center, valign=center]
+        \sbtitle{PhD cybersecurity}
+    \end{tcolorbox}
+}
+
+% "nested" box 3
+\posterbox[halign=right, valign=bottom]{name=nest2, column=13, span=6, row=17, rowspan=3}{
+    \begin{tcolorbox}[colframe=accent,beforeafter skip=3pt,inherit height=0.7,width=4.1cm, halign=center, valign=center]
+        \sbtitle{a rewarding career devising ways to secure digital privacy}
+    \end{tcolorbox}
+}
+
+\end{tcbposter} % end page 2
+
+\end{document}
