@@ -3,10 +3,11 @@ A three-column graphical curriculum vitae
 ## What
 This template provides a potential employer/school with all the connecting glue that most resume formats leave out. The usual suspects -- degrees, jobs, skills -- occupy boxes in the left and right columns, so the reader can still get that traditional bullet-point overview. The middle column tells the relevant bits of your life story, in a natural chronological order that provides context for where you've been and what you've done. You can use it to explain gaps in employment, add detail to the quick-glance side entries, and display your personality.
 ## Why
-When I decided to go back to grad school, I passed my old resume to an industry friend who does a lot of hiring. He walked me through his mental evaluation. "So here's a section on Papers... and here a section on Patents... how do they time up with your Experience? Hmmm, here's a three-year gap, what happened there? So you started a PhD program but I don't see a degree... what's that all about?" Rather than let the reader assume the worst (three years of rehab? Failed out of grad school?), I decided to provide the missing intel -- in a clear, easy-to-parse chronological layout that highlights what belongs together.
+When I passed my old resume to an industry friend who does a lot of hiring, he walked me through his mental evaluation. "So here's a section on Papers... and here a section on Patents... how do they time up with your Experience? Hmmm, here's a three-year gap, what happened there? So you started a PhD program but I don't see a degree... what's that all about?" Rather than let the reader assume the worst (three years of rehab? Failed out of grad school?), I decided to provide the missing intel -- in a clear, easy-to-parse chronological layout that highlights what belongs together.
 ## How
 This is a __LaTeX2e__ template that compiles with either __XeLaTeX__ or __LuaLaTex__. You can upload the files to [__ShareLatex.com__](https://sharelatex.com) (a personal account is free) to edit and compile them online.
 ## Preview
+(Note: these are screenshots from the original code as it is here. For my current resume, see the pdf above.)
 ![sample cv page 1 image](https://github.com/gbmj/gbmj-timeline-cv/blob/master/sample-cv-p1n.png "sample cv page 1")
 ![sample cv page 2 image](https://github.com/gbmj/gbmj-timeline-cv/blob/master/sample-cv-p2.png "sample cv page 2")
 ## License
